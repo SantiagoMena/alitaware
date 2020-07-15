@@ -3,14 +3,12 @@ namespace alitaware;
 require('./clases/Usuario.php');
 require('./clases/Api.php');
 
-// use alitaware\DB;
+
+$textoNombre = isset($_GET['nombre']) ? $_GET['nombre'] : false;
 
 
-$id = isset($_GET['id']) ? $_GET['id'] : false;
-$id = 1;
-
-if(!$id) {
-    throw new Exception('Ingrese el atributo $_GET["id"]', 1);    
+if(!$textoNombre) {
+    return json_encode([]);
 }
 
 $usuario = new Usuario();
@@ -18,12 +16,12 @@ $usuario = new Usuario();
 // var_dump($usuario->getAll());
 // var_dump($usuario->getByNombre('jh'));
 
-$usuarios = $usuario->getByNombre('jh');
-
+$usuarios = $usuario->getByNombre($textoNombre);
+$data = [];
 foreach ($usuarios as $usuario) {
     $api = new Api($usuario['x_geo'], $usuario['y_geo']);
-    
-    var_dump($api->getData());
+    $data[] = array_merge($usuario, [ 'geo' => $api->getData() ]);
 }
 
+echo json_encode($data);
 ?>
