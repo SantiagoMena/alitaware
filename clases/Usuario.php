@@ -40,4 +40,33 @@ class Usuario
 
          return array_filter($data, function($dato){ return !is_null($dato); });
     }
+
+    public function getEquipo(): array
+    {
+        $db = new DB();
+        $sql = "SELECT equipo.nombre as nombre_equipo,
+                usuario.usuario as usuario,
+                subscriptor.nombre as subscriptor
+                from equipo 
+                inner join subscripcion on subscripcion.id=equipo.subscripcion_id
+                inner join subscriptor on subscriptor.id=subscripcion.subscriptor_id
+                inner join usuario on usuario.equipo_id = equipo.id;";
+        
+        $data = [];
+
+        foreach ($db->pdo->query($sql) as $usuario) {
+            $data[$usuario['nombre_equipo']][] = $usuario;
+        }
+
+        $result = [];
+        foreach ($data as $key => $item) {
+            $result[] = [
+                'equipo' => $key,
+                'subscriptor' => $item[0]['subscriptor'],
+                'usuarios' => $item
+            ];
+        }
+
+        return $result;
+    }
 }
