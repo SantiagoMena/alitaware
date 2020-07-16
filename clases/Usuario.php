@@ -7,7 +7,7 @@ class Usuario
     private $usuarios;
     public function __construct() {
         $db = new DB();
-        $sql = "SELECT usuario, nombre as nombre_equipo, X(primer_uso_geo) as x_geo, Y(primer_uso_geo) as y_geo from usuario
+        $sql = "SELECT usuario, nombre as nombre_equipo, ST_X(primer_uso_geo) as x_geo, ST_Y(primer_uso_geo) as y_geo from usuario
                 INNER JOIN equipo on equipo.id = usuario.equipo_id;";
 
         $data = [];
@@ -38,7 +38,9 @@ class Usuario
             }
         }
 
-         return array_filter($data, function($dato){ return !is_null($dato); });
+        $return = array_filter($data, function($dato){ return !is_null($dato); });
+
+        return is_null($return) ? [] : $return;
     }
 
     public function getEquipo(): array
