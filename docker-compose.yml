@@ -1,0 +1,49 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    mysql:
+      image: mysql:8.0
+      container_name: alitaware-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=alitaware
+        - MYSQL_DATABASE=alitaware
+        - MYSQL_USER=alitaware
+        - MYSQL_PASSWORD=alitaware
+      ports:
+        - "8002:3306"
+      links:
+        - mysqlinit
+        - php-fpm
+        - webserver
+
+    mysqlinit:
+      image: mysql:8.0
+      container_name: alitaware-mysqlinit
+      volumes:
+        - ./dump.sql:/dump.sql
+      command: bash -c "sleep 30 && cat /dump.sql | mysql -h mysql -ualitaware -palitaware alitaware"
+
+    webserver:
+      image: nginx:alpine
+      container_name: alitaware-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8000:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: alitaware-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+
