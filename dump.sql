@@ -1,3 +1,22 @@
+CREATE DATABASE  IF NOT EXISTS `alitaware` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `alitaware`;
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+--
+-- Host: localhost    Database: alitaware
+-- ------------------------------------------------------
+-- Server version	5.7.17
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 --
 -- Table structure for table `costo`
 --
@@ -50,7 +69,7 @@ CREATE TABLE `equipo` (
 
 LOCK TABLES `equipo` WRITE;
 /*!40000 ALTER TABLE `equipo` DISABLE KEYS */;
-INSERT INTO `equipo` VALUES (1,1,'Lince'),(2,2,'Gacela'),(3,3,'Aguila Calva');
+INSERT INTO `equipo` VALUES (1,1,'Lince'),(2,4,'Gacela'),(3,7,'Aguila Calva');
 /*!40000 ALTER TABLE `equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +209,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,1,'2020-07-15 00:00:00','\0\0\0\0\0\0\0bï¿½ï¿½ï¿½yCï¿½ï¿½mï¿½Qï¿½','jhon','4c25b32a72699ed712dfa80df77fc582'),(2,1,'2020-07-15 00:00:00','\0\0\0\0\0\0\0bï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½mï¿½Qï¿½','usuario1','4c25b32a72699ed712dfa80df77fc582'),(7,3,'2020-07-15 00:00:00','\0\0\0\0\0\0\0bï¿½ï¿½ï¿½ï¿½Fï¿½ï¿½mï¿½Qï¿½','usuario3','4c25b32a72699ed712dfa80df77fc582'),(8,2,'2020-07-15 00:00:00','\0\0\0\0\0\0\0bï¿½ï¿½ï¿½ï¿½Dï¿½ï¿½mï¿½Qï¿½','usuario2','4c25b32a72699ed712dfa80df77fc582');
+INSERT INTO `usuario` VALUES (1,1,'2020-07-15 00:00:00','\0\0\0\0\0\0\0b™¹ÀyCÀµmÁQÀ','jhon','4c25b32a72699ed712dfa80df77fc582'),(2,1,'2020-07-15 00:00:00','\0\0\0\0\0\0\0b™¹ÀùAÀµmÁQÀ','usuario1','4c25b32a72699ed712dfa80df77fc582'),(7,3,'2020-07-15 00:00:00','\0\0\0\0\0\0\0b™¹ÀùFÀµmÁQÀ','usuario3','4c25b32a72699ed712dfa80df77fc582'),(8,2,'2020-07-15 00:00:00','\0\0\0\0\0\0\0b™¹ÀùDÀµmÁQÀ','usuario2','4c25b32a72699ed712dfa80df77fc582');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -203,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-15 16:35:05
+-- Dump completed on 2020-07-15 21:32:50
